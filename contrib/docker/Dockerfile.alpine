@@ -1,4 +1,4 @@
-FROM alpine:3.16 as builder
+FROM alpine:3.21.2 as builder
 LABEL org.opencontainers.image.authors="Vincenzo Palazzo (@vincenzopalazzo) vincenzopalazzodev@gmail.com"
 
 WORKDIR /build
@@ -33,7 +33,7 @@ RUN git clone /source /repo --recursive && \
     make -j $(nproc) && \
     make install
 
-FROM alpine:3.16 as runner
+FROM alpine:3.21.2 as runner
 
 RUN apk update && \
     apk add \
